@@ -1,2 +1,2 @@
 # Test Tasks FacieAI
-work start at 25.02.2025
+Work start at 25.02.2025; 20:05
