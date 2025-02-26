@@ -1,5 +1,6 @@
 package org.example.test_tasks_facieai.repository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 import redis.clients.jedis.Jedis;
@@ -14,7 +15,12 @@ import java.util.Map;
 @Repository
 public class ProductRepository {
     private final Map<String, String> productCache = new HashMap<>();
-    private final Jedis redisClient = new Jedis("localhost", 6379);
+    private final Jedis redisClient;
+
+    @Autowired
+    public ProductRepository(Jedis redisClient) { // Автовпровадження біну Jedis
+        this.redisClient = redisClient;
+    }
 
     public void loadProductsFromFile(MultipartFile file) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
@@ -32,3 +38,4 @@ public class ProductRepository {
         return productName != null ? productName : "Missing Product Name";
     }
 }
+
