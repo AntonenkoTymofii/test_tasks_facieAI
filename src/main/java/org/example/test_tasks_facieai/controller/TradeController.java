@@ -12,9 +12,11 @@ import java.io.IOException;
 public class TradeController {
 
     private final TradeService tradeService;
+    private final ProductRepository productRepository;
 
-    public TradeController(TradeService tradeService) {
+    public TradeController(TradeService tradeService, ProductRepository productRepository) {
         this.tradeService = tradeService;
+        this.productRepository = productRepository;
     }
 
     @PostMapping(consumes = "multipart/form-data", produces = "text/csv")
@@ -26,8 +28,7 @@ public class TradeController {
 
     @PostMapping("/upload-products")
     public String uploadProducts(@RequestParam("file") MultipartFile file) throws IOException {
-        ProductRepository productRepository = new ProductRepository();
-        productRepository.loadProductsFromFile(file);
+        productRepository.loadProductsFromFile(file); // Використовуємо інжектований `productRepository`
         return "Product data uploaded successfully";
     }
 }
