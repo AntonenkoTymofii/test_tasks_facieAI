@@ -43,7 +43,7 @@ public class TradeService {
         return result.toString();
     }
 
-    private boolean isValidDate(String date) {
+    boolean isValidDate(String date) {
         try {
             dateFormat.setLenient(false);
             dateFormat.parse(date);
