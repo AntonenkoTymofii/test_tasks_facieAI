@@ -19,12 +19,20 @@ public class TradeController {
         this.productRepository = productRepository;
     }
 
-    @PostMapping(consumes = "multipart/form-data", produces = "text/csv")
-    public ResponseEntity<String> enrichTrades(@RequestParam("file") MultipartFile file) throws IOException {
-        String result = tradeService.processTrades(file);
-        return ResponseEntity.ok(result);
+    @PostMapping(value = "/csv", consumes = "multipart/form-data", produces = "text/csv")
+    public ResponseEntity<String> enrichTradesCsv(@RequestParam("file") MultipartFile file) throws IOException {
+        return ResponseEntity.ok(tradeService.processTradesCsv(file));
     }
 
+    @PostMapping(value = "/json", consumes = "application/json", produces = "text/csv")
+    public ResponseEntity<String> enrichTradesJson(@RequestBody MultipartFile file) throws IOException {
+        return ResponseEntity.ok(tradeService.processTradesJson(file));
+    }
+
+    @PostMapping(value = "/xml", consumes = "application/xml", produces = "text/csv")
+    public ResponseEntity<String> enrichTradesXml(@RequestBody MultipartFile file) throws IOException {
+        return ResponseEntity.ok(tradeService.processTradesXml(file));
+    }
 
     @PostMapping("/upload-products")
     public String uploadProducts(@RequestParam("file") MultipartFile file) throws IOException {
