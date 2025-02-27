@@ -2,7 +2,9 @@
 
 **Task started 25.02.25 at 20:00**
 
-**Task finished 27.02.25 at 13:00**
+**Task finished 27.02.25 at 14:33**
+
+_All tasks were realized._
 
 ## How to run project
 To run the project, you need to clone the repository from GitHub and 
