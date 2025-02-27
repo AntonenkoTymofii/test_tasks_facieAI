@@ -34,10 +34,18 @@ I used the MVC pattern for easier understanding of the code.
 I tried to follow the principles of SOLID. You can also implement the 
 GoF Strategy pattern.
 
+## Tests
+We also implemented tests for the service and repository:
+
+![Repository test](img.png)
+
+![Service test](img_1.png)
+
 ## Conclusion and ideas
 In general, if we talk about improvements, if I had more time, 
 I could think, for example, about processing additional file types, 
-writing new types of tests (integration, load). We could also add new 
-patterns to make the code easier to read and to make the logic more visible.
+writing new types of tests (integration, load and tests for controller).
+We could also add new patterns to make the code easier to read 
+and to make the logic more visible.
 
 
